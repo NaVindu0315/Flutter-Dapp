@@ -1,8 +1,4 @@
-import 'dart:html';
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_web3/flutter_web3.dart';
-
+/*
 class MetaMaskProvider extends ChangeNotifier {
   static const operatingChain = 4;
 
@@ -46,3 +42,4 @@ class MetaMaskProvider extends ChangeNotifier {
     }
   }
 }
+*/
