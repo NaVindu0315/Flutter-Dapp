@@ -10,7 +10,7 @@ class MetaMaskProvider extends ChangeNotifier {
 
   int currentChain = -1;
 
-  // Add this line
+  final Ethereum? ethereum = window.ethereum; // Add this line
 
   bool get isEnabled => ethereum != null;
 
