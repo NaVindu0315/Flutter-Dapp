@@ -1,7 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
-import 'package:web3dart/web3dart.dart';
+import 'package:flutter_web3/flutter_web3.dart';
 
 class MetaMaskProvider extends ChangeNotifier {
   static const operatingChain = 4;
@@ -10,7 +10,7 @@ class MetaMaskProvider extends ChangeNotifier {
 
   int currentChain = -1;
 
-  final Ethereum? ethereum = window.ethereum; // Add this line
+  // Add this line
 
   bool get isEnabled => ethereum != null;
 
