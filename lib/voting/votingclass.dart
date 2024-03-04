@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/src/client.dart';
 import 'package:web3dart/web3dart.dart';
+import 'package:html/html_escape.dart';
 
 class Voting extends StatefulWidget {
   const Voting({Key? key}) : super(key: key);
