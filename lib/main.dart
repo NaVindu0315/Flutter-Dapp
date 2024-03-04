@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp/pages/home.dart';
 import 'package:flutter_dapp/voting/votingclass.dart';
-import 'dart:html';
 
 void main() {
   runApp(const MyApp());

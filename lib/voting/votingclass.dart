@@ -1,10 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/src/client.dart';
 import 'package:web3dart/web3dart.dart';
-import 'package:html/html_escape.dart';
 
 class Voting extends StatefulWidget {
   const Voting({Key? key}) : super(key: key);
@@ -141,8 +138,9 @@ class _VotingState extends State<Voting> {
             Row(
               children: [
                 Spacer(),
-                ElevatedButton(onPressed: () {}, child: Text('Vote A')),
-                ElevatedButton(onPressed: () {}, child: Text('Vote B')),
+                voteButton('Vote Alpha', true),
+                SizedBox(height: 16.0), // Add spacing between buttons
+                voteButton('Vote Beta', false),
                 Spacer(),
               ],
             ),
