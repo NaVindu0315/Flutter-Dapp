@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/src/client.dart';
 import 'package:web3dart/web3dart.dart';
 
 class Voting extends StatefulWidget {
@@ -12,6 +13,15 @@ class Voting extends StatefulWidget {
 }
 
 class _VotingState extends State<Voting> {
+  void snackBar({required String label}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(label),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
   ///variables
   late Client httpClient;
 
@@ -32,7 +42,7 @@ class _VotingState extends State<Voting> {
     // Obtain our smart contract using rootbundle to access our json file
     String abiFile = await rootBundle.loadString("assets/contract.json");
 
-    String contractAddress = "0xee3F5a4361ec47C57394Fc028C3fBCCd0e9f1B5d";
+    String contractAddress = "0x87B966dABb5DCE6bc588Ddbaa2CC5184dbE0DD7B";
 
     final contract = DeployedContract(ContractAbi.fromJson(abiFile, "Voting"),
         EthereumAddress.fromHex(contractAddress));
@@ -55,14 +65,6 @@ class _VotingState extends State<Voting> {
     totalVotesB = resultsB[0];
 
     setState(() {});
-  }
-
-  Future<List<dynamic>> callFunction(String name) async {
-    final contract = await getContract();
-    final function = contract.function(name);
-    final result = await ethClient
-        .call(contract: contract, function: function, params: []);
-    return result;
   }
 
   Future<void> vote(bool voteAlpha) async {
@@ -102,7 +104,7 @@ class _VotingState extends State<Voting> {
   @override
   void initState() {
     httpClient = Client();
-    ethClient = Web3Client(blockchainUrl, httpClient);
+    ethClient = Web3Client(blockchainUrl, httpClient as Client);
     getTotalVotes();
     super.initState();
   }
