@@ -121,7 +121,7 @@ class _VotingState extends State<Voting> {
     super.initState();
   }
 
-  @override
+  /* @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -146,6 +146,89 @@ class _VotingState extends State<Voting> {
             ),
             Spacer(),
           ],
+        ),
+      ),
+    );
+  }
+}
+*/
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(30),
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          child: Text("A"),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Total Votes: ${totalVotesA ?? ""}",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          child: Text("B"),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text("Total Votes: ${totalVotesB ?? ""}",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      vote(true);
+                    },
+                    child: Text('Vote Alpha'),
+                    style: ElevatedButton.styleFrom(shape: StadiumBorder()),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      vote(false);
+                    },
+                    child: Text('Vote Beta'),
+                    style: ElevatedButton.styleFrom(shape: StadiumBorder()),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
