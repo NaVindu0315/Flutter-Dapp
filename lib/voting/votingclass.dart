@@ -67,6 +67,20 @@ class _VotingState extends State<Voting> {
     setState(() {});
   }
 
+  Widget voteButton(String label, bool voteValue) {
+    return ElevatedButton(
+      onPressed: () async {
+        await vote(voteValue);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Vote recorded for $label'),
+          ),
+        );
+      },
+      child: Text(label),
+    );
+  }
+
   Future<void> vote(bool voteAlpha) async {
     snackBar(label: "Recording vote");
 
@@ -111,6 +125,30 @@ class _VotingState extends State<Voting> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          children: [
+            Spacer(),
+            Row(
+              children: [
+                Spacer(),
+                Text('Total Count'),
+                Spacer(),
+              ],
+            ),
+            Row(
+              children: [
+                Spacer(),
+                ElevatedButton(onPressed: () {}, child: Text('Vote A')),
+                ElevatedButton(onPressed: () {}, child: Text('Vote B')),
+                Spacer(),
+              ],
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
   }
 }
