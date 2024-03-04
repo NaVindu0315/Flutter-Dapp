@@ -28,6 +28,14 @@ class _VotingState extends State<Voting> {
   var totalVotesB;
 
   @override
+  void initState() {
+    httpClient = Client();
+    ethClient = Web3Client(blockchainUrl, httpClient);
+    getTotalVotes();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return const Placeholder();
   }
