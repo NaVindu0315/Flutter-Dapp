@@ -57,6 +57,48 @@ class _VotingState extends State<Voting> {
     setState(() {});
   }
 
+  Future<List<dynamic>> callFunction(String name) async {
+    final contract = await getContract();
+    final function = contract.function(name);
+    final result = await ethClient
+        .call(contract: contract, function: function, params: []);
+    return result;
+  }
+
+  Future<void> vote(bool voteAlpha) async {
+    snackBar(label: "Recording vote");
+
+    // Obtain private key for write operation
+    Credentials key = EthPrivateKey.fromHex(
+        "f6417d3d4c5cc294ace85aa196fcde0ca792550e085f65fff459423e597ff306");
+
+    // Obtain our contract from abi in json file
+    final contract = await getContract();
+
+    // Extract function from json file
+    final function = contract.function(
+      voteAlpha ? "voteAlpha" : "voteBeta",
+    );
+
+    // Send transaction using the our private key, function and contract
+    await ethClient.sendTransaction(
+        key,
+        Transaction.callContract(
+            contract: contract, function: function, parameters: []),
+        chainId: 4);
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+    snackBar(label: "verifying vote");
+
+    // Set a 20 seconds delay to allow the transaction to be verified before trying to retrieve the balance
+    Future.delayed(const Duration(seconds: 20), () {
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+      snackBar(label: "retrieving votes");
+      getTotalVotes();
+
+      ScaffoldMessenger.of(context).clearSnackBars();
+    });
+  }
+
   @override
   void initState() {
     httpClient = Client();
