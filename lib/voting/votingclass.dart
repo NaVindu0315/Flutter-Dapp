@@ -40,7 +40,7 @@ class _VotingState extends State<Voting> {
     // Obtain our smart contract using rootbundle to access our json file
     String abiFile = await rootBundle.loadString("assets/contract.json");
 
-    String contractAddress = "0x87B966dABb5DCE6bc588Ddbaa2CC5184dbE0DD7B";
+    String contractAddress = "0xa723Dc722D113aCF063a69b05dBFa1180F7A9Bf9";
 
     final contract = DeployedContract(ContractAbi.fromJson(abiFile, "Voting"),
         EthereumAddress.fromHex(contractAddress));
@@ -81,10 +81,12 @@ class _VotingState extends State<Voting> {
 
   Future<void> vote(bool voteAlpha) async {
     snackBar(label: "Recording vote");
+    EthereumAddress address = EthereumAddress.fromHex(myAddress);
 
     // Obtain private key for write operation
     Credentials key = EthPrivateKey.fromHex(
-        "bdb3d39f69282abbce39e6d834b762a6ab093d97b94411f018b1fe607ea017e6");
+      "bdb3d39f69282abbce39e6d834b762a6ab093d97b94411f018b1fe607ea017e6",
+    );
 
     // Obtain our contract from abi in json file
     final contract = await getContract();
@@ -99,7 +101,7 @@ class _VotingState extends State<Voting> {
         key,
         Transaction.callContract(
             contract: contract, function: function, parameters: []),
-        chainId: 4);
+        chainId: 11155);
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     snackBar(label: "verifying vote");
 
@@ -116,42 +118,11 @@ class _VotingState extends State<Voting> {
   @override
   void initState() {
     httpClient = Client();
-    ethClient = Web3Client(blockchainUrl, httpClient as Client);
+    ethClient = Web3Client(blockchainUrl, httpClient);
     getTotalVotes();
     super.initState();
   }
 
-  /* @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Column(
-          children: [
-            Spacer(),
-            Row(
-              children: [
-                Spacer(),
-                Text('Total Count'),
-                Spacer(),
-              ],
-            ),
-            Row(
-              children: [
-                Spacer(),
-                voteButton('Vote Alpha', true),
-                SizedBox(height: 16.0), // Add spacing between buttons
-                voteButton('Vote Beta', false),
-                Spacer(),
-              ],
-            ),
-            Spacer(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-*/
   @override
   Widget build(BuildContext context) {
     return SafeArea(
