@@ -17,7 +17,14 @@ class _HomesState extends State<Homes> {
         ),
         body: Column(
           children: [
-            Container(),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.13,
+              decoration: BoxDecoration(
+                color: Colors.deepPurple..withOpacity(.4),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            )
           ],
         ),
       ),
