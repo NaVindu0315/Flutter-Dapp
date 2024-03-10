@@ -24,6 +24,21 @@ class _HomesState extends State<Homes> {
                 color: Colors.deepPurple..withOpacity(.4),
                 borderRadius: BorderRadius.circular(10),
               ),
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Current Blaance',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             )
           ],
         ),
