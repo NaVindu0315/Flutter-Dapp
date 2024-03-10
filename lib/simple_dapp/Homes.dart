@@ -35,6 +35,14 @@ class _HomesState extends State<Homes> {
                           fontSize: 30.0,
                         ),
                       ),
+                      SizedBox(
+                        height: 12.0,
+                      ),
+                      Text(
+                        '0',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      )
                     ],
                   ),
                 ),
