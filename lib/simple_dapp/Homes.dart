@@ -75,7 +75,11 @@ class _HomesState extends State<Homes> {
                 height: 40.0,
               ),
               CustomContainerButtonWidget(
-                  title: "Get Balance", color: Colors.green, onTap: () {}),
+                  title: "Get Balance",
+                  color: Colors.green,
+                  onTap: () {
+                    incorrectValueDialogBox(context);
+                  }),
               SizedBox(
                 height: 10.0,
               ),
