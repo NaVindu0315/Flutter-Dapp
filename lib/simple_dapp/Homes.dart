@@ -53,7 +53,7 @@ class _HomesState extends State<Homes> {
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 40.0,
               ),
               SfSlider(
                 value: _value,
