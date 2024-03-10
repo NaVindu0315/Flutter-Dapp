@@ -64,7 +64,7 @@ class _HomesState extends State<Homes> {
                   });
                 },
                 interval: 1,
-                activeColor: Colors.white,
+                activeColor: Colors.deepPurpleAccent,
                 enableTooltip: true,
                 stepSize: 1.0,
                 showLabels: true,
@@ -92,4 +92,87 @@ class _HomesState extends State<Homes> {
       ),
     );
   }
+}
+
+incorrectValueDialogBox(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Invalid Value',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18.0,
+            ),
+          ),
+          content: const Text('Please put a value greater then 0.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black87,
+              )),
+          actions: [
+            ElevatedButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      });
+}
+
+sendDialogBox(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "Thanks for your Transaction",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      });
+}
+
+withDrawDialogBox(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "Thanks for your Withdrawal",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      });
 }
