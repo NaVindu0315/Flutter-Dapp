@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp/simple_dapp/widgetbuttoncontainer.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class Homes extends StatefulWidget {
@@ -70,6 +71,21 @@ class _HomesState extends State<Homes> {
                 min: 0.0,
                 max: 10.0,
               ),
+              SizedBox(
+                height: 40.0,
+              ),
+              CustomContainerButtonWidget(
+                  title: "Get Balance", color: Colors.green, onTap: () {}),
+              SizedBox(
+                height: 10.0,
+              ),
+              CustomContainerButtonWidget(
+                  title: "Withdraw Balance", color: Colors.red, onTap: () {}),
+              SizedBox(
+                height: 10.0,
+              ),
+              CustomContainerButtonWidget(
+                  title: "Send", color: Colors.pink, onTap: () {}),
             ],
           ),
         ),
