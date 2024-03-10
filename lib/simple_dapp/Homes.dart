@@ -15,6 +15,11 @@ class _HomesState extends State<Homes> {
         appBar: AppBar(
           title: Text('DAPP'),
         ),
+        body: Column(
+          children: [
+            Container(),
+          ],
+        ),
       ),
     );
   }
