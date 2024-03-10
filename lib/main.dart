@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp/pages/home.dart';
+import 'package:flutter_dapp/simple_dapp/Homes.dart';
 import 'package:flutter_dapp/voting/votingclass.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Voting(),
+      home: Homes(),
     );
   }
 }
